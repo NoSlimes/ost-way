@@ -19,36 +19,36 @@ public class PhysicsPickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        /* if (Input.GetKeyDown(KeyCode.Space))
+         {
 
-            if (CurrentObject)
-            {
-                CurrentObject.useGravity = true;
-                CurrentObject = null;
-                return;
-            }
+             if (CurrentObject)
+             {
+                 CurrentObject.useGravity = true;
+                 CurrentObject = null;
+                 return;
+             }
 
-            Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0, 5f, 0.5f, 0f));
-            if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
-            {
-                CurrentObject = HitInfo.rigidbody;
-                CurrentObject = useGravity = false;
-            }
-        }
-    }
+             Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0, 5f, 0.5f, 0f));
+             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
+             {
+                 CurrentObject = HitInfo.rigidbody;
+                 CurrentObject = useGravity = false;
+             }
+         }
+     }
 
-    private void FixedUpdate()
-    {
-        Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
-        float DistanceToPoint = DirectionToPoint.magnitude;
+     private void FixedUpdate()
+     {
+         Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
+         float DistanceToPoint = DirectionToPoint.magnitude;
 
-        CurrentObject.velocity = DirectionToPoint * DistanceToPoint;
+         CurrentObject.velocity = DirectionToPoint * DistanceToPoint;*/
     }
 }
