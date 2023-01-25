@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
+using Application = UnityEngine.Application;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,6 +19,9 @@ public class MainMenu : MonoBehaviour
     public float downTimePress = 0;
     public float downTimePressF = 0;
     public Boolean buttonSelected = false;
+    //creates a variable for a game object
+    private GameObject myHStartButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +33,8 @@ public class MainMenu : MonoBehaviour
         sceneName = currentScene.name;
         print(sceneName);
         downTimePress = 0;
+        //I tell the game object variable to find the game object I want it to interact with
+        myHStartButton = GameObject.Find("HStartButton");
     }
 
 
@@ -68,6 +77,17 @@ public class MainMenu : MonoBehaviour
                 }
             }
         }
+
+        //this checks what button is selected and makes sure that button is highlighted
+        if (setButton == 0)
+        {
+            myHStartButton.SetActive(true);
+        }
+        else
+        {
+            myHStartButton.SetActive(false);
+        }
+
         //what happens when you press the highlighted button
         if (downTimePress - downTimePressF > 3)
         {
@@ -90,6 +110,7 @@ public class MainMenu : MonoBehaviour
                 buttonSelected = false;
             }
         }
+        
         //to leave the credit menu
         if (Input.GetKeyDown(KeyCode.Alpha1) && (sceneName == Credit))
         {
