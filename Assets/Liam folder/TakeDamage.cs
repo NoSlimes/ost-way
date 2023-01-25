@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    public float playerhp = 10f;
+    public int maxHealth = 3;
+    public int currentHealth;
+    public Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+    }
+
+    void takeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("You died...");
+        }
+
     }
 
     // Update is called once per frame
@@ -24,7 +37,7 @@ public class TakeDamage : MonoBehaviour
         if(other.tag == "Enemy")
         {
             Debug.Log("You took damage!");
-            playerhp -= 5;
+            currentHealth -= 1;
         }
     }
 
