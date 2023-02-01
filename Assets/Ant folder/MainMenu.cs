@@ -27,11 +27,15 @@ public class MainMenu : MonoBehaviour
     
     //creates a variable for a game object
     private GameObject myHStartButton;
+    private GameObject myHCreditButton;
+    private GameObject myHExitButton;
 
-    //
+    //variables for the visual confirmation
     public Image confirmation;
     public bool holding;
-    public float confirmTime = 4.0f;
+    public float confirmTime = 2.0f;
+    public bool doNotSpin;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,9 +50,13 @@ public class MainMenu : MonoBehaviour
         print(sceneName);
         downTimePress = 0;
         
-        //I tell the game object variable to find the game object I want it to interact with
+        //tells the game object variable to find the game object I want it to interact with
         myHStartButton = GameObject.Find("HStartButton");
+        myHCreditButton = GameObject.Find("HCreditButton");
+        myHExitButton = GameObject.Find("HExitButton");
 
+        //setup for the visual confirmation
+        doNotSpin = false;
         confirmation.fillAmount = 0;
     }
 
@@ -71,9 +79,24 @@ public class MainMenu : MonoBehaviour
             holding = true;
         }
 
-        if(holding == true)
+        //This makes sure that visual confirmation resets when the button is let go
+        if (holding == false)
         {
+            confirmation.fillAmount = 0;
+        }
+
+        //this is what fills the visual confirmation
+        if (holding == true && doNotSpin == false)
+        {
+            confirmation.fillClockwise = true;
             confirmation.fillAmount += 1.0f / confirmTime * Time.deltaTime;
+            
+            //this makes sure that the visual confirmation doesn't loop
+            if (confirmation.fillAmount == 1)
+            {
+                doNotSpin = true;
+                print("good to go");
+            }
         }
 
         //get the time that you released the button
@@ -82,11 +105,12 @@ public class MainMenu : MonoBehaviour
             downTimePress = Time.time;
             holding = false;
             //find the time that passed between when you pressed the button and when you released the button
-            if (downTimePress - downTimePressF > 4) 
+            if (downTimePress - downTimePressF > 2) 
             {
                 //if time is larger than 4 seconds then you are good to go
                 buttonSelected = true;
                 print("button Pressed"); 
+                doNotSpin=false;
             }
             else { print("Next option"); }
         }
@@ -118,8 +142,27 @@ public class MainMenu : MonoBehaviour
             myHStartButton.SetActive(false);
         }
 
+        if ((setButton == 1) && (sceneName == AntMenu))
+        {
+            myHCreditButton.SetActive(true);
+        }
+        else if (sceneName == AntMenu)
+        {
+            myHCreditButton.SetActive(false);
+        }
+
+        if ((setButton == 2) && (sceneName == AntMenu))
+        {
+            myHExitButton.SetActive(true);
+        }
+        else if (sceneName == AntMenu)
+        {
+            myHExitButton.SetActive(false);
+        }
+
+
         //what happens when you press the highlighted button
-        if ((downTimePress - downTimePressF > 3) && (sceneName == AntMenu))
+        if ((downTimePress - downTimePressF > 2) && (sceneName == AntMenu))
         {
             //game starts
             if ((buttonSelected == true) && (setButton == 0))
