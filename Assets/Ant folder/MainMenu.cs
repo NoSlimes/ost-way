@@ -66,14 +66,14 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         //to leave the credit menu
-        if (Input.GetKeyDown(KeyCode.Alpha1) && (sceneName == AntCredits))
+        if (Input.GetButtonDown("Button") && (sceneName == AntCredits))
         {
             print("Back to Menu");
             menu();
         }
         
         //get the time that you pressed down the button
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetButtonDown("Button"))
         {
             downTimePressF = Time.time;
             holding = true;
@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour
         }
 
         //get the time that you released the button
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetButtonUp("Button"))
         {
             downTimePress = Time.time;
             holding = false;
@@ -116,7 +116,7 @@ public class MainMenu : MonoBehaviour
         }
 
         //change highlighted button
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetButtonUp("Button"))
         {
             //so it doesn't changed the highighted button at the last second
             if (buttonSelected == false)
