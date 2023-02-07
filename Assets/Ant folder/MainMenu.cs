@@ -190,8 +190,10 @@ public class MainMenu : MonoBehaviour
     // scene changes
     public void StartGame()
     {
-        SceneManager.LoadScene(firstLevel);
+        //SceneManager.LoadScene(firstLevel);
+        NoSlimesJustCats.SceneChanger.instance.ChangeScene(firstLevel);
     }
+    
 
     //the part that closes the game
     public void QuitGame()
@@ -203,12 +205,14 @@ public class MainMenu : MonoBehaviour
     //the part that opens the credits
     public void AntCredit()
     {
-        SceneManager.LoadScene(AntCredits);
+        //SceneManager.LoadScene(AntCredits);
+        NoSlimesJustCats.SceneChanger.instance.ChangeScene(AntCredits);
     }
 
     //the part that sends the player back to the menu from the credits
     public void menu()
     {
-        SceneManager.LoadScene(AntMenu);
+        //SceneManager.LoadScene(AntMenu);
+        NoSlimesJustCats.SceneChanger.instance.ChangeScene(AntMenu);
     }
 }
