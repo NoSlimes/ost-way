@@ -57,7 +57,11 @@ public class MainMenu : MonoBehaviour
 
         //setup for the visual confirmation
         doNotSpin = false;
-        confirmation.fillAmount = 0;
+        if (confirmation)
+        {
+            confirmation.fillAmount = 0;
+        }
+
     }
 
     
@@ -71,6 +75,12 @@ public class MainMenu : MonoBehaviour
             print("Back to Menu");
             menu();
         }
+
+        if (Input.GetButtonDown("Button") && (sceneName == "FailScene"))
+        {
+            Debug.Log("Back to Menu");
+            menu();
+        }
         
         //get the time that you pressed down the button
         if (Input.GetButtonDown("Button"))
@@ -80,22 +90,26 @@ public class MainMenu : MonoBehaviour
         }
 
         //This makes sure that visual confirmation resets when the button is let go
-        if (holding == false)
-        {
-            confirmation.fillAmount = 0;
-        }
 
-        //this is what fills the visual confirmation
-        if (holding == true && doNotSpin == false)
+        if (confirmation)
         {
-            confirmation.fillClockwise = true;
-            confirmation.fillAmount += 1.0f / confirmTime * Time.deltaTime;
-            
-            //this makes sure that the visual confirmation doesn't loop
-            if (confirmation.fillAmount == 1)
+            if (holding == false)
             {
-                doNotSpin = true;
-                print("good to go");
+                confirmation.fillAmount = 0;
+            }
+
+            //this is what fills the visual confirmation
+            if (holding == true && doNotSpin == false)
+            {
+                confirmation.fillClockwise = true;
+                confirmation.fillAmount += 1.0f / confirmTime * Time.deltaTime;
+
+                //this makes sure that the visual confirmation doesn't loop
+                if (confirmation.fillAmount == 1)
+                {
+                    doNotSpin = true;
+                    print("good to go");
+                }
             }
         }
 

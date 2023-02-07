@@ -1,6 +1,8 @@
+using NoSlimesJustCats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,16 +10,19 @@ public class MoveingScritp : MonoBehaviour
 {
     private float FirstClickingTime;
     private float TimeBetweenClicks = 1;
-    private bool MayIDuble = true;
+    private bool MayIDuble = false;
     private int AmountOfClicks = 0;
 
-    public GameObject UIobjet;
+    public GameObject UIObject;
     public GameObject UIForward;
     public GameObject UIRight;
     public GameObject UILeft;
 
     private Rigidbody2D rb;
     public float speed;
+
+    public UnityEvent playerExitTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +67,7 @@ public class MoveingScritp : MonoBehaviour
             AmountOfClicks = 0;
         }
         transform.position += transform.forward * speed * Time.deltaTime;
-        if (Input.GetButtonUp("fire2"))
+        if (Input.GetButtonDown("Button"))
         {
             AmountOfClicks += 1;
         }
@@ -70,6 +75,10 @@ public class MoveingScritp : MonoBehaviour
         {
             FirstClickingTime = Time.time;
             StartCoroutine(CheckDubleClick());
+        }
+
+        if(Input.GetKeyDown(KeyCode.V)){
+            playerExitTrigger.Invoke();
         }
     }
 
@@ -94,9 +103,16 @@ public class MoveingScritp : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        MayIDuble = true;
+        if (!other.CompareTag("Wall"))
+        {
+            MayIDuble = true;
 
-     UIobjet.SetActive(true);
+            UIObject.SetActive(true);
+        }
+        else
+        {
+            SceneChanger.instance.ChangeScene("FailScene");
+        }
     }
     void OnTriggerExit(Collider other)
     {
@@ -116,11 +132,14 @@ public class MoveingScritp : MonoBehaviour
         }
         MayIDuble = false;
 
-        UIobjet.SetActive(false);
+        UIObject.SetActive(false);
 
         speed *= 1.05f;
 
         AmountOfClicks = 0;
+
+        playerExitTrigger.Invoke();
+
     }
     void Right()
     {

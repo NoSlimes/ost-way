@@ -80,7 +80,7 @@ namespace TMPro.Examples
                 //int lastVertexIndex = textInfo.characterInfo[characterCount - 1].vertexIndex;
 
                 float boundsMinX = m_TextComponent.bounds.min.x;  //textInfo.meshInfo[0].mesh.bounds.min.x;
-                float boundsMaxX = m_TextComponent.bounds.max.x;  //textInfo.meshInfo[0].mesh.bounds.max.x;
+                float boundsMaxX = m_TextComponent.bounds.max.x;  //textInfo.meshInfo[0].mesh.bounds.target.x;
 
 
 
