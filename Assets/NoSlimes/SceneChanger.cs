@@ -50,11 +50,9 @@ namespace NoSlimesJustCats
             {
                 float progress = Mathf.Clamp01(loadSceneOperation.progress / .9f);
                 loadBar.value = progress;
-                Debug.Log(loadSceneOperation.progress);
-                if(loadSceneOperation.progress >= 0.85f)
+                if(loadSceneOperation.progress >= 0.9f)
                 {
                     loadSceneOperation.allowSceneActivation = true;
-                    Debug.Log(loadSceneOperation.progress);
                 }
                 yield return null;
             }
