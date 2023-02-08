@@ -83,6 +83,11 @@ public class AudioManager : MonoBehaviour
 
 
         }
+        if(changedScene.name == "MainMenu")
+        {
+            StopAll();
+            Play("song");
+        }
     }
 
     private void Update()
