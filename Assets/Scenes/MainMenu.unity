@@ -943,10 +943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06038eda47dbab49ac4bf5342364a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTime: 5
-  maxTime: 10
+  minTime: 30
+  maxTime: 60
   forceMaxTime: 0
-  startOnAwake: 1
+  startOnAwake: 0
 --- !u!1 &820240628
 GameObject:
   m_ObjectHideFlags: 0

@@ -110,6 +110,7 @@ public class MovingScript : MonoBehaviour
             UIObject.SetActive(true);
 
             playerEnterTrigger.Invoke();
+            AmountOfClicks = 0;
         }
         else
         {

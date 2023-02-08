@@ -16,10 +16,7 @@ namespace NoSlimesJustCats
         {
             volume = GetComponentInChildren<Volume>();
 
-            if (!checkPaused())
-            {
-                Pause();
-            }
+            Pause();
         }
 
         private bool pressedPause()
