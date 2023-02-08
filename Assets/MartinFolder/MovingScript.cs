@@ -21,7 +21,7 @@ public class MovingScript : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
 
-    public UnityEvent playerExitTrigger;
+    public UnityEvent playerEnterTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +78,7 @@ public class MovingScript : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.V)){
-            playerExitTrigger.Invoke();
+            playerEnterTrigger.Invoke();
         }
     }
 
@@ -108,6 +108,8 @@ public class MovingScript : MonoBehaviour
             MayIDuble = true;
 
             UIObject.SetActive(true);
+
+            playerEnterTrigger.Invoke();
         }
         else
         {
@@ -139,7 +141,7 @@ public class MovingScript : MonoBehaviour
 
         AmountOfClicks = 0;
 
-        playerExitTrigger.Invoke();
+        
 
     }
     void Right()

@@ -16,15 +16,15 @@ namespace NoSlimesJustCats
         {
             volume = GetComponentInChildren<Volume>();
 
-            if (checkPaused())
+            if (!checkPaused())
             {
-                Unpause();
+                Pause();
             }
         }
 
         private bool pressedPause()
         {
-            if (Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Button"))
             {
                 return true;
             }
@@ -48,7 +48,7 @@ namespace NoSlimesJustCats
                 {
                     Unpause();
                 }
-                else Pause();
+                //else Pause();
 
             }
         }
