@@ -26,10 +26,11 @@ public class randomAudioPlayer : MonoBehaviour
 
     public void SceneChanged(Scene prevScene, Scene newScene)
     {
-        if(newScene.name == "MainMenu" || newScene.name == "Credits")
+        /*if(newScene.name == "MainMenu" || newScene.name == "Credits")
         {
             StopCoroutine(SoundLoop(0, 0, false));
-        }
+        }*/
+        StopCoroutine(SoundLoop(0, 0, false));
     }
 
     private IEnumerator SoundLoop(float minTime, float maxTime, bool forceMaxTime)

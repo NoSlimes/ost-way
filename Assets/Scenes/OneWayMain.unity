@@ -12185,10 +12185,13 @@ MonoBehaviour:
   speed: 10
   playerEnterTrigger:
     m_PersistentCalls:
+      m_Calls: []
+  playerExitTrigger:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1674581263}
-        m_TargetAssemblyTypeName: JumpScare, Assembly-CSharp
-        m_MethodName: StartJumpScare
+      - m_Target: {fileID: 1679175414}
+        m_TargetAssemblyTypeName: ScoreCounter, Assembly-CSharp
+        m_MethodName: AddScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12198,12 +12201,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerExitTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1679175414}
-        m_TargetAssemblyTypeName: ScoreCounter, Assembly-CSharp
-        m_MethodName: AddScore
+      - m_Target: {fileID: 1674581263}
+        m_TargetAssemblyTypeName: JumpScare, Assembly-CSharp
+        m_MethodName: StartJumpScare
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
