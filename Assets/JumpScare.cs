@@ -9,7 +9,7 @@ public class JumpScare : MonoBehaviour
     [SerializeField] private float target = 0f;
     [SerializeField] private float speed = 1.0f;
 
-    private float chance = 0.05f;
+    private float chance = 0.15f;
 
     [SerializeField] private Image image;
     [SerializeField] private GameObject JumpScareBG;

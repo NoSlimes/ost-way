@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 public class MainMenu : MonoBehaviour

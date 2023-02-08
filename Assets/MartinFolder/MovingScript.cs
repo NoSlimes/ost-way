@@ -22,6 +22,7 @@ public class MovingScript : MonoBehaviour
     public float speed;
 
     public UnityEvent playerEnterTrigger;
+    public UnityEvent playerExitTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +104,8 @@ public class MovingScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //if(other.gameObject.tag != "ClickTrigger") { return; }
+
         if (!other.CompareTag("Wall"))
         {
             MayIDuble = true;
@@ -120,7 +123,8 @@ public class MovingScript : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if(AmountOfClicks == 1   )
+        //if (other.gameObject.tag != "TurnTrigger") { return; }
+        if (AmountOfClicks == 1   )
         {
             Left();
             Debug.Log("LEFT");
@@ -142,7 +146,7 @@ public class MovingScript : MonoBehaviour
 
         AmountOfClicks = 0;
 
-        
+        playerExitTrigger.Invoke();
 
     }
     void Right()
