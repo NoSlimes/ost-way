@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MoveingScritp : MonoBehaviour
+public class MovingScript : MonoBehaviour
 {
     private float FirstClickingTime;
     private float TimeBetweenClicks = 1;
@@ -112,6 +112,7 @@ public class MoveingScritp : MonoBehaviour
         else
         {
             SceneChanger.instance.ChangeScene("FailScene");
+            AudioManager.instance.Play("mouseDEAD");
         }
     }
     void OnTriggerExit(Collider other)

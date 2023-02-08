@@ -15,11 +15,21 @@ public class randomAudioPlayer : MonoBehaviour
     {
         if(!startOnAwake) { return; }
         StartCoroutine(SoundLoop(minTime, maxTime, forceMaxTime));
+
+        SceneManager.activeSceneChanged += SceneChanged;
     }
 
     public void StartLoop()
     {
         StartCoroutine(SoundLoop(minTime, maxTime, forceMaxTime));
+    }
+
+    public void SceneChanged(Scene prevScene, Scene newScene)
+    {
+        if(newScene.name == "MainMenu" || newScene.name == "Credits")
+        {
+            StopCoroutine(SoundLoop(0, 0, false));
+        }
     }
 
     private IEnumerator SoundLoop(float minTime, float maxTime, bool forceMaxTime)
@@ -29,11 +39,11 @@ public class randomAudioPlayer : MonoBehaviour
 
             if (forceMaxTime)
             {
-                yield return new WaitForSeconds(maxTime);
+                yield return new WaitForSecondsRealtime(maxTime);
             }
             else
             {
-                yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+                yield return new WaitForSecondsRealtime(Random.Range(minTime, maxTime));
             }
 
             switch (Random.Range(0, 4))

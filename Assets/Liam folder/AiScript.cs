@@ -10,14 +10,14 @@ public class AiScript : MonoBehaviour
     public Transform target;
     public float speed = 4f;
     public NavMeshAgent navMeshAgent;
-    private MoveingScritp playerMovement;
+    private MovingScript playerMovement;
 
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        playerMovement = target.gameObject.GetComponent<MoveingScritp>();
+        playerMovement = target.gameObject.GetComponent<MovingScript>();
     }
 
     // Update is called once per frame
